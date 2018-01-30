@@ -1,0 +1,674 @@
+/** 包括
+** YUI css reset
+** icon字体
+** kc基础样式集
+** scrollbar
+** modal
+** 侧滑栏
+** 选择部门、员工弹窗
+**/
+
+/*** YUI css reset 确保不同浏览器拥有相同默认样式*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+form,fieldset,input,textarea,p,blockquote,th,td {
+    padding: 0;
+    margin: 0;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+fieldset,img {
+    border: 0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+    font-weight: normal;
+    font-style: normal;
+}
+ol,ul {
+    list-style: none;
+}
+caption,th {
+    text-align: left;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
+    font-size: 100%;
+}
+q:before,q:after {
+    content:'';
+}
+abbr,acronym {
+    border: 0;
+}
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+html,body{
+  color:#333;
+  font-family: "Helvetica Neue",Tahoma, "Microsoft Yahei", Helvetica, Arial, sans-serif;
+  font-size:14px;
+  width:100%;
+  height:100%;
+}
+iframe{
+  height:100%;
+  width:100%;
+  border:none;
+}
+nav, div, ul {
+  -webkit-overflow-scrolling: touch;
+}
+/*********icon字体**********/
+@font-face {
+    font-family: 'iconfont';
+    src: url('../font/iconfont.eot'); /* IE9*/
+    src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../font/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:18px;
+    font-style:normal;
+    vertical-align: middle;
+    font-weight:initial;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+/************* 公共icon *************/
+.icon-lg{
+  font-size: 2rem;
+}
+.icon-md{
+  font-size: 1.6rem;
+}
+.icon-sm{
+  font-size: 1.2rem;
+}
+.icon{
+  font-size: .8rem;
+  vertical-align: inherit;
+  margin-right: .1rem;
+}
+.icon-arrow-right:before{
+    content: "\e675";
+}
+.icon-personal:before{
+    content: "\e60c";
+}
+.icon-headset:before{
+    content: "\e612"
+}
+.icon-disc:before{
+  content: "\e656"
+}
+.icon-mv:before{
+  content: "\e6df"
+}
+/*****kc基础样式集 ***/
+  .height-auto{
+    height:auto;
+  }
+  .height100{
+    height:100%;
+  }
+  .width-auto{
+    width:auto;
+  }
+  .width15{
+    width:15%;
+  }
+  .width20{
+    width:20%;
+  }
+  .width25{
+    width:25%;
+  }
+  .width30{
+    width:30%;
+  }
+  .width50{
+    width: 50%;
+  }
+  .width75{
+    width:75%;
+  }
+  .width80{
+    width:80%;
+  }
+  .width85{
+    width:85%;
+  }
+  .width90{
+      width: 90%;
+  }
+  .width100{
+    width:100%;
+  }
+  h5{
+    font-size: 16px;
+  }
+  a{
+    color: #333;
+  }
+  a:active,
+  a:link{
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none;
+    color: #5ba7ef;
+  }
+  .kc-input{
+      width: 100%;
+      height: 35px;
+      padding: 6px 12px;
+      font-size: 12px;
+      line-height: 1.42857143;
+      color: #555;
+      background-color: #fff;
+      background-image: none;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      overflow: auto;
+      line-height: 20px;
+      outline: none;
+  }
+  .kc-input:focus{
+      border-color: #01b7ef;
+  }
+  @-ms-viewport {
+    width: device-width;
+  }
+/***浮动****/
+  .fl {
+    float:left;
+  }
+  .fr {
+    float:right;
+  }
+/***清除浮动****/
+  .clearfix{
+    *zoom:1;
+  }
+  .clearfix:after{
+    display:table;
+    content:'';
+    clear:both;
+  }
+/**** flex *****/
+  .flex{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+/***文字省略***/
+  .ellipsis{
+    overflow:hidden;
+    text-overflow: ellipsis;
+    -webkit-text-overflow:ellipsis;
+    white-space: nowrap;
+  }
+  .txtBtn{
+    color: #333;
+    transition: color .3s ease-in-out;
+  }
+  .txtBtn:hover{
+    color: #57a3f3;
+    cursor: pointer;
+  }
+  .txtBtn-light{
+    color: #2d8cf0;
+    transition: color .3s ease-in-out;
+  }
+  .txtBtn-light:hover{
+    color: #57a3f3;
+    cursor: pointer;
+  }
+/* -- fade -- */
+@-webkit-keyframes vodal-fade-enter {
+    from {
+        opacity: 0;
+    }
+}
+@keyframes vodal-fade-enter {
+    from {
+        opacity: 0;
+    }
+}
+.vodal-fade-enter-active {
+    -webkit-animation: vodal-fade-enter both ease-in;
+    animation: vodal-fade-enter both ease-in;
+}
+@-webkit-keyframes vodal-fade-leave {
+    to {
+        opacity: 0
+    }
+}
+@keyframes vodal-fade-leave {
+    to {
+        opacity: 0
+    }
+}
+.vodal-fade-leave-active {
+    -webkit-animation: vodal-fade-leave both ease-out;
+    animation: vodal-fade-leave both ease-out;
+}
+/* -- slideDown -- */
+@-webkit-keyframes vodal-slideDown-enter {
+    from {
+        -webkit-transform: translate3d(0, -100px, 0);
+        transform: translate3d(0, -100px, 0);
+    }
+}
+@keyframes vodal-slideDown-enter {
+    from {
+        -webkit-transform: translate3d(0, -100px, 0);
+        transform: translate3d(0, -100px, 0);
+    }
+}
+.vodal-slideDown-enter-active {
+    -webkit-animation: vodal-slideDown-enter both cubic-bezier(0.4, 0, 0, 1.5);
+    animation: vodal-slideDown-enter both cubic-bezier(0.4, 0, 0, 1.5);
+}
+@-webkit-keyframes vodal-slideDown-leave {
+    to {
+        -webkit-transform: translate3d(0, -100px, 0);
+        transform: translate3d(0, -100px, 0);
+    }
+}
+@keyframes vodal-slideDown-leave {
+    to {
+        -webkit-transform: translate3d(0, -100px, 0);
+        transform: translate3d(0, -100px, 0);
+    }
+}
+.vodal-slideDown-leave-active {
+    -webkit-animation: vodal-slideDown-leave both;
+    animation: vodal-slideDown-leave both;
+}
+/******* fadein ********/
+@-webkit-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+}
+.anim_fade_image {
+    position:absolute;
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-timing-function: ease-in-out;
+    /* -webkit-animation-iteration-count: infinite; */
+    -webkit-animation-duration: 1.2s;
+    /* -webkit-animation-direction: alternate; */
+}
+/********** 业务模块通用样式 *********/
+.home-model-component{
+  /* position: relative;
+  padding-top: 5.8rem;
+  overflow: auto;
+  -webkit-overflow-scrolling : touch;
+  z-index: 0; */
+}
+.blurbg {
+    filter: blur(30px) brightness(.8);
+    background-size: 100% auto;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 0;
+    padding-top: 100%;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    transform: scale(1.2);
+    background-color: transparent;
+}
+.flexlist .flexlist {
+	flex: 1;
+	padding: .5em .5em .5em 0;
+	margin: 0;
+	align-items: center;
+	margin-left: 0;
+	box-sizing: content-box;
+	overflow: hidden;
+	line-height: 1.5;
+	position: relative;
+	border-bottom: 1px solid #dadada;
+	width: auto;
+}
+.flexlist {
+    display: flex;
+    align-items: stretch;
+}
+.flexlist .flexlist .flexleft {
+	padding-right: .5em
+}
+.flexleft img {
+	vertical-align: middle;
+	width: 1.5em;
+}
+.flex-center {
+	align-items: center
+}
+.flexnum {
+	flex: 0 0 3rem;
+	color: #999;
+	text-align: center;
+}
+.flexnum span {
+	font-size: 1.2em;
+}
+.flexact {
+	text-align: right;
+	font-size: .8em;
+	color: #999;
+	display: flex
+}
+.flexmain {
+    box-sizing: border-box;
+    flex: 1;
+    overflow: hidden;
+}
+.flexmain div {
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    word-wrap: break-word;
+}
+.relistdes {
+    color: #999;
+    font-size: .8em;
+}
+.relistdes:nth-child(odd) {
+    padding-top: .5em;
+}
+.img_playcount {
+	position: absolute;
+	right: 0;
+	top: 0;
+	color: #fff;
+	z-index: 1;
+	font-size: .8em;
+	padding: .5em;
+	background-image: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, 0));
+	width: 100%;
+	text-align: right;
+	box-sizing: border-box;
+}
+.img_playcount img {
+	vertical-align: baseline;
+	margin-right: .2em;
+	position: relative;
+	height: 1em;
+	width: auto;
+}
+/************* loading/playing ************/
+@keyframes cnloading {
+  0% {
+    transform: translateY(0)
+  }
+  50% {
+    transform: translateY(100%)
+  }
+  100% {
+    transform: translateY(0)
+  }
+}
+.cntloading {
+	padding: 1.5em 0;
+	text-align: center;
+	color: #888;
+}
+.cntloading div {
+	vertical-align: baseline;
+	height: 1em;
+	overflow: hidden;
+	margin-left: 10px;
+	overflow: hidden;
+	text-align: center;
+	display: inline-block;
+}
+.cntloading span {
+	width: 2px;
+	height: 80%;
+	background-color: #d33a31;
+	position: relative;
+	margin-right: 0;
+	display: inline-block;
+	border-radius: 3px;
+	animation: cnloading 1s linear infinite;
+	transform-origin: center bottom;
+	font-size: 0;
+}
+.cntloading .cl2 {
+	animation-delay: -.8s
+}
+.cntloading .cl3 {
+	animation-delay: -.6s
+}
+.cntloading .cl4 {
+	animation-delay: -.4s
+}
+.cntloading .cl4 {
+	animation-delay: -.2s
+}
+/************ card ************/
+.carditem-component {
+  margin: 1% 1% 1% 0;
+  box-sizing: border-box;
+  line-height: 1.2;
+  flex: 0 0 32.667%;
+  overflow: hidden;
+}
+.flex-one .carditem-component {
+    flex: 0 0 100%;
+    margin: 1% 1% 3% 0;
+}
+.flex-two .carditem-component {
+    flex: 0 0 49.5%;
+    margin: 1% 1% 3% 0;
+}
+.flex-two .carditem-component:nth-child(2n) {
+    margin-right: 0;
+}
+.flex-three .carditem-component {
+    flex: 0 0 32.667%;
+    margin: 1% 1% 3% 0;
+}
+.flex-three .carditem-component:nth-child(3n) {
+    margin-right: 0;
+}
+.img_creator {
+    position: absolute;
+    right: 0;
+    bottom: .3em;
+    color: #fff;
+    z-index: 1;
+    width: 100%;
+    padding: 1em .5em .5em;
+    font-size: .8em;
+    box-sizing: border-box;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, .3));
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+/************** carditem ***************/
+.flex .song-list-component:last-child{
+  margin:0!important;
+}
+.song-list-detail {
+  position: relative;
+  width: 100%;
+}
+.song-list-detail-cover {
+  width: 100%;
+  height: 100%;
+  /* border: 0.01rem solid #eee; */
+}
+.song-list-detail-listen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height:100%;
+}
+.song-list-detail-listen-count {
+  position:absolute;
+  right:0.05rem;
+  top:0.05rem;
+  color: #fff;
+}
+.song-list-name {
+  margin: .05rem 0 .15rem;
+  text-align: left;
+  padding: 0rem .2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+/*************** playdetail ***************/
+.header-topBox{
+  position: fixed;
+  z-index: 5;
+  height: 50px;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  max-width: 750px;
+}
+.header-topBox .blurbg{
+  height: 0;
+  padding-top: 100%;
+}
+.plist-header{
+  position: relative;
+	overflow: hidden;
+	padding-top: 50px;
+}
+.plh-main{
+  position: relative;
+	z-index: 3;
+	display: flex;
+	align-items: center;
+}
+.plh-cover {
+	margin: 0 4% .5em;
+	position: relative;
+	flex: 0 0 35%;
+	height: 0;
+	padding-top: 35%;
+}
+.plh-cover .music_cover {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+}
+.plh-playinfo {
+	position: absolute;
+	z-index: 3;
+	right: 5px;
+	bottom: 5px
+}
+.plh-playinfo img {
+	height: 1.5em;
+	vertical-align: top;
+	background-color: rgba(0, 0, 0, .2);
+	border-radius: 50%;
+}
+.user_ava {
+	width: 2.4em;
+	height: 2.4em;
+	border-radius: 50%;
+	margin-right: .5em;
+	vertical-align: bottom;
+}
+.plh-cnt {
+	color: #fff;
+	flex: 0 0 58%;
+	font-size: .8em;
+	line-height: 1.8
+}
+.plh-cnt a {
+	color: #ccc;
+  font-size: 1.3em;
+}
+.plh-cnt .music_h_name {
+	padding: 0 .1em 1em;
+	display: block;
+  font-size: 1.6em;
+  color: #fff;
+}
+.plh_action {
+	display: flex;
+	position: relative;
+	z-index: 3;
+	clear: both;
+	width: 100%;
+	line-height: 2;
+	text-align: center;
+	color: #fff;
+}
+.plh_action a {
+	color: #fff
+}
+.plh_action div {
+	border-bottom: none;
+	flex: 1;
+}
+.plh_action div img {
+  width: 3.2em;
+	display: block;
+	margin: -.5em auto -1em
+}
+.plh_action span {
+	display: block;
+	line-height: 2
+}
+.playall .flexlist {
+  padding: .9em 0;
+}
+.playall img {
+	height: 1.5em;
+}
+.pa-count text {
+	color: #888;
+	font-size: 24px
+}
+.mint-header .mint-button{
+  padding: 0 2em 0 0;
+}
+.mint-button-icon i{
+  font-size: 19px;
+}
+.mint-header-title{
+  font-size: 1.25em;
+}
+/************** songlist *************/
+.fa_list {
+	margin-left: .2em
+}
+.fa_list img {
+	height: 2.3em
+}
+/***************** player *****************/

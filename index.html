@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>myCloudMusic</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="cloud music">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  	<!-- <link rel="shortcut icon" href="./static/img/favicon.ico"> -->
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <div id="versionLow" class="versionLow" style="display: none;">
+  		<div class="low_warning">
+  			<span>您现在使用的浏览器版本过低，可能会导致部分图片和信息的缺失。请下载
+  				<a title="谷歌浏览器" class="kie-setup-taoBrowser" href="http://www.google.com/intl/zh-CN/chrome/" target="_blank">谷歌浏览器</a>
+  				或者<a title="360浏览器" class="kie-setup-taoBrowser" href="http://se.360.cn/" target="_blank">360浏览器</a>
+  				或者<a title="IE浏览器" class="kie-setup-taoBrowser" href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads">升级IE浏览器至9.0以上</a>！</span>
+  		</div>
+  	</div>
+  </body>
+  <script>
+      // 禁止页面拖放事件
+      window.ondragover=function(e) { e.preventDefault(); return false };
+      window.ondrop=function(e) { e.preventDefault(); return false };
+      document.oncontextmenu = function (){return false};
+      // 检测浏览器版本
+      var agent = window.navigator.userAgent.toLowerCase();
+  		if (window.ActiveXObject || "ActiveXObject" in window){
+  			if(agent.indexOf("msie") > 0){
+  				var ver = agent.match(/msie ([\d.]+)/)[1];
+  				if(ver < 9.0){
+  					console.log("您现在使用的浏览器版本过低，请下载谷歌浏览器或者360浏览器或者升级IE浏览器至9.0以上!");
+  					document.getElementById("versionLow").style.display = "block";
+            document.getElementById("app").style.display = "none";
+  				}
+  			}
+  		}
+  </script>
+  <style>
+    .versionLow{
+      padding: 200px 50px;
+      text-align: center;
+    }
+    .kie-setup-taoBrowser{
+      color: red;
+      text-decoration:none;
+    }
+  </style>
+</html>
