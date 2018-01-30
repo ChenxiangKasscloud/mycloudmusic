@@ -36,3 +36,24 @@ npm run build
  4、音频播放（基本播放功能）
 ```
 ## 项目截图
+
+![Image text](https://raw.githubusercontent.com/ChenxiangKasscloud/mycloudmusic/master/static/imgs/index_1.png)
+
+
+
+![Image text](https://raw.githubusercontent.com/ChenxiangKasscloud/mycloudmusic/master/static/imgs/index_2.png)
+
+
+
+![Image text](https://raw.githubusercontent.com/ChenxiangKasscloud/mycloudmusic/master/static/imgs/index_3.png)
+
+
+
+![Image text](https://raw.githubusercontent.com/ChenxiangKasscloud/mycloudmusic/master/static/imgs/songlist.png)
+
+
+
+![Image text](https://raw.githubusercontent.com/ChenxiangKasscloud/mycloudmusic/master/static/imgs/audio.png)
+
+
+
