@@ -81,7 +81,6 @@
 <script>
 	import {mapState } from 'vuex'
 	import PdApi from '../../service/api/pdetailapi.js';
-	import bs64 from "@/base64";
 	import Loading from "@/components/widget/loading"
 	import PlayIcon from "@/components/playicon/index"
 	import SongList from "./songlist";
