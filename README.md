@@ -16,16 +16,13 @@ npm run dev
 
 # build for production with minification
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
+## Tips
+
+> 如果有的同学install不成功，可以直接用里面压缩过的node_model.zip
+> 需要借用<a herf="https://github.com/Binaryify/NeteaseCloudMusicApi">Binaryify提供的网易云音乐 Node.js API service</a>，非常感谢；
+> 此为模拟移动端，推荐用chrome，调成移动端尺寸浏览
+
+## 时间有限，只写了一些基础模块，后面还在填充中
+
+# 项目截图
