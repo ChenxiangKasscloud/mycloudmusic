@@ -1,8 +1,8 @@
-# nsyh
+# mycloudmusic
 
 > A Vue.js project
 > author  cx
-> creatTime  2017-11-23
+> creatTime  2018-1-10
 
 ## Build Setup
 
@@ -11,7 +11,7 @@
 npm install
 npm install --registry=https://registry.npm.taobao.org
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at localhost:8060
 npm run dev
 
 # build for production with minification
