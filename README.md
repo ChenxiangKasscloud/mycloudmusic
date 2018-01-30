@@ -4,6 +4,7 @@
  A Vue.js project
  author  cx
  creatTime  2018-1-10
+ ps ： 个人练习项目，为了更熟悉vue的使用
 ```
 
 ## Build Setup
