@@ -22,11 +22,12 @@ npm run build
 ```
 ## Tips
 
-``` bash
- 1、如果有的同学install不成功，可以直接用里面压缩过的node_model.zip;
- 2、需要借用Binaryify提供的网易云音乐API (https://github.com/Binaryify/NeteaseCloudMusicApi)，非常感谢；
- 3、此为模拟移动端，推荐用chrome，调成移动端尺寸浏览
-```
+如果有的同学install不成功，可以直接用里面压缩过的node_model.zip;
+
+需要借用[Binaryify提供的网易云音乐API](https://github.com/Binaryify/NeteaseCloudMusicApi)，非常感谢
+
+此为模拟移动端，推荐用chrome，调成移动端尺寸浏览
+
 
 ### 只是抽空写了一些基础模块，剩下的还在填充中
 ``` bash
