@@ -2,7 +2,7 @@
 ** get方法
 ** post方法
 ** author : cx
-** time   : 2017/12/04
+** time   : 2018/1/10
 **/
 
 'use strict'
