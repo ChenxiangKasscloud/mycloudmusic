@@ -29,11 +29,6 @@
         fontSize : 0.1
       }
     },
-    computed: {
-      phoneResolutionWidth () {
-        return this.$store.state.phoneResolutionWidth
-      }
-    },
     methods: {
       handleClick (event) {
         this.$emit('click', event);

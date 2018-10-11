@@ -2,7 +2,7 @@
   <div class="index-banner-component">
     <swipe class="my-swipe" :auto="auto" :style="{height:bannerHeight+'rem'}">
       <swipe-item class="slide" v-for="(item, index) in bannerList"  :key="index">
-        <img class="slide-img" :src="item.pic">
+        <img class="slide-img" :src="item.picUrl">
       </swipe-item>
     </swipe>
   </div>
@@ -34,7 +34,7 @@
     },
     beforeMount(){
       let dpr = document.getElementsByTagName('html')[0].dataset.dpr;
-      this.bannerHeight = dpr <= 2 ? 9.5 : 11.5;
+      this.bannerHeight = dpr <= 2 ? 9.5 : 13.5;
     },
     mounted(){
        this.getBanners()

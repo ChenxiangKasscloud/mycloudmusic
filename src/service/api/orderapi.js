@@ -13,7 +13,7 @@ const OrderApi = {
   // 获取精品歌单
   getHQList () {
     return new Promise( (resolve,reject) => {
-      api.get('top/playlist/highquality',null).then( res => {
+      api.get('/top/playlist/highquality',null).then( res => {
         resolve(res)
       }).catch( err => {
         resolve(res)
@@ -23,7 +23,7 @@ const OrderApi = {
   // 获取歌曲分类
   getCateList () {
     return new Promise( (resolve,reject) => {
-      api.get('playlist/catlist',null).then( res => {
+      api.get('/playlist/catlist',null).then( res => {
         resolve(res)
       }).catch( err => {
         resolve(res)
@@ -33,7 +33,7 @@ const OrderApi = {
   // 获取分类歌曲列表
   getPlayList (params) {
     return new Promise( (resolve,reject) => {
-      api.get('top/playlist',params).then( res => {
+      api.get('/top/playlist',params).then( res => {
         resolve(res)
       }).catch( err => {
         resolve(res)

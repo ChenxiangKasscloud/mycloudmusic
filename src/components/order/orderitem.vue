@@ -33,11 +33,6 @@
         fontSize : 0.1
       }
     },
-    computed: {
-      phoneResolutionWidth () {
-        return this.$store.state.phoneResolutionWidth
-      }
-    },
     methods: {
       goToMusicList (id) {
         this.$router.push({

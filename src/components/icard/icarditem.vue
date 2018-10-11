@@ -41,9 +41,6 @@
       }
     },
     computed: {
-      phoneResolutionWidth () {
-        return this.$store.state.phoneResolutionWidth
-      },
       htIconClass () {
         let htclass = this.icontype == 'audio' ? "icon-headset" :
                       this.icontype == 'video' ? "icon-mv" : '';

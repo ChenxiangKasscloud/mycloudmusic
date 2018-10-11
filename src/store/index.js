@@ -28,7 +28,7 @@ const store = new Vuex.Store({
      * 新的数据管理字段
      */
     AUDIO : null,   // 音频对象
-    phoneResolutionWidth: 0, // 手机分辨率宽度
+    phoneInfo: {}, // 手机物理参数
     scrolltop: 0,
     music: {
 			al: {},
@@ -47,6 +47,7 @@ const store = new Vuex.Store({
     index_song: 0,
     favorites : [],
     iscycle : false,
+    selected: 'find_music' // find_music, my_music, friends, account
   },
   actions:{
     // 异步获获取红心歌曲，用户创建的歌单列表
@@ -113,12 +114,19 @@ const store = new Vuex.Store({
     }
   },
   mutations : {
+    SETTABBAR (state, { tabkey} ){
+      state.selected = tabkey
+    },
     SETAUDIO (state, audio) {
       state.AUDIO = audio
     },
     //  设置手机分辨率宽度
-    SETREALWIDTH(state, width) {
-        state.phoneResolutionWidth = width
+    SETREALDPR(state, dpr) {
+      state.phoneInfo = {
+        DPR : dpr,
+        resolutionWidth : document.body.clientWidth * dpr,
+        resolutionHeight : document.body.clientHeight * dpr
+      }
     },
     // 设置滚动条高度
     SETSCROLL(state, st) {

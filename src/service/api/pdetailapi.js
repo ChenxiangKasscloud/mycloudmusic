@@ -13,7 +13,7 @@ const SlistApi = {
   // 获取歌单详情
   getPlayDetail (params) {
     return new Promise( (resolve,reject) => {
-      api.get('playlist/detail',params).then( res => {
+      api.get('/playlist/detail',params).then( res => {
         resolve(res)
       }).catch( err => {
         resolve(res)

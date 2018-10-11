@@ -10,25 +10,24 @@
 import axios from 'axios'
 import globalConfig from './globalConfig'
 
-axios.defaults.timeout = 5000; // 默认5s超时
-//axios手动配置项，给requestHeaders添加cookie
-axios.defaults.withCredentials = true;
+axios.defaults.timeout = 5000 // 默认5s超时
+axios.defaults.withCredentials = true // axios手动配置项，给requestHeaders添加cookieß
 
 class Xhttp {
-	get(url, params) {
-		let param = {params}
-		return new Promise ( (resolve,reject) => {
-			globalConfig.headers.token= localStorage.getItem("prmManage_token") || "";
-			axios.get(globalConfig.baseURL+ url, param, globalConfig).then((res) => {
-				if (res.data.code == 500 ){
-					console.log("服务器错误");
-					reject("服务器错误");
-				} else if (res.data.code== 523){
-					this.$cookie.delete('username');
-					window.location.href='#/login';
-					reject("未登录");
-				} else if (res.data.code> 400&&res.data.code<500){
-					reject(res.data.code+":"+res.data.msg);
+  get (url, params) {
+    let param = {params}
+    return new Promise((resolve, reject) => {
+      globalConfig.headers.token = localStorage.getItem('prmManage_token') || ''
+      axios.get(globalConfig.baseURL + url, param, globalConfig).then((res) => {
+        if (res.data.code === 500) {
+          console.log('服务器错误')
+          reject('服务器错误')
+        } else if (res.data.code === 523) {
+          this.$cookie.delete('username')
+          window.location.href = '#/login'
+          reject('未登录')
+        } else if (res.data.code > 400 && res.data.code < 500) {
+          reject(res.data.code + ':' + res.data.msg)
 				} else if ( res.data.code == 200 ){
 					resolve(res.data);
 				}else {

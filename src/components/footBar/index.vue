@@ -38,8 +38,8 @@ export default{
      },
      methods:{
         setTab(tab){
-          this.$store.dispatch('SET_TABBAR',{
-            selected:tab
+          this.$store.commit('SETTABBAR',{
+            tabKey: tab
           })
         }
      },

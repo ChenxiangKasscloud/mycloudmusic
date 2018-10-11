@@ -13,17 +13,23 @@
     		<img src="../../assets/img/aag.png" />
     	</div>
       <div class="playing-main" v-show="!showlrc" @click="showlrc=!showlrc">
-    		<img class="playingmainbg" src="../../assets/img/play.png" />
-    		<div
-          :style="{'background-image':'url('+(cover||(music.al||music.album||{}).picUrl)+'?param=200y200)'}"
-          bindtap="loadlrc"
-          class="pmaincover">
+        <div class="playing-disc">
+          <div class="playing-turn">
+            <img v-show="!playing" class="playingmainbg" src="../../assets/img/play.png" />
+            <div
+              v-show="playing"
+              :style="{'background-image':'url('+(cover||(music.al||music.album||{}).picUrl)+'?param=200y200)'}"
+              bindtap="loadlrc"
+              class="pmaincover">
+            </div>
+          </div>
         </div>
+    		
     	</div>
       <!-- 歌词 -->
-    	<!-- <div id="lrclist" @click="showlrc=!showlrc">
-    		<lrc :lrc="lrcObj" :showlrc="showlrc" lrcindex="1"></lrc>
-    	</div> -->
+    	<div id="lrclist" class="playing-lyric" @click="showlrc=!showlrc">
+    		<Lrc :lrc="lrcObj" :showlrc="showlrc" lrcindex="1"></Lrc>
+    	</div>
       <!-- 歌曲属性 -->
       <div class="playing-actwrap">
   			<div class="playing-info" v-show="!showlrc">
@@ -78,6 +84,7 @@
   import PlayerApi from '../../service/api/playerapi.js'
   import Lrc from '@/components/lrc/lrc';
   import PlayingBar from '@/components/playingbar/index'
+  import u from '@/utils.js'
 
   export default{
     name : 'player',
@@ -87,7 +94,8 @@
 				id: 0,
 				showlrc: false,
 				cover: "",
-				pop_tg: 0
+        pop_tg: 0,
+        lrcObj:{lrc: [{}]}
       }
     },
     components : {
@@ -107,7 +115,7 @@
 				'music',
 				'audiotype',
 				'favorites',
-				'lrcObj',
+				// 'lrcObj',
 				'commentscount',
 				// 'list_am',
 				'playurl',
@@ -125,7 +133,22 @@
             id : id
           }
           PlayerApi.getLrc(params).then( (res) => {
-            console.info("res",res)
+            let lrc = u.parse_lrc(res.lrc && res.lrc.lyric ? res.lrc.lyric : '');
+            let tlrc = u.parse_lrc(res.tlyric && res.tlyric.lyric ? res.tlyric.lyric : '');
+            tlrc = tlrc.now_lrc;
+            if(tlrc.length) {
+              lrc.now_lrc.map((v, i) => {
+                tlrc.forEach(k => {
+                  if(k.lrc_sec == v.lrc_sec) {
+                    v.tlrc = k.lrc == v.lrc ? '' : k.lrc
+                  }
+                })
+                return v
+              })
+            }
+            res.lrc = lrc.now_lrc;
+            res.scroll = lrc.scroll ? 1 : 0;
+            this.lrcObj = res;
           }).catch( (err) =>{})
         }
 			},
@@ -212,6 +235,11 @@
             img: this.cover || ( this.music.al || this.music.album || {} ).picUrl
   				}
 				})
+      },
+      showlrc(value) {
+				if(value && !this.lrcObj.code) {
+					this.loadLrc(this.music.id)
+				}
 			}
     },
     mounted( ) {
@@ -240,6 +268,17 @@
   	top: 40px;
   	overflow: hidden;
   }
+  .playing-lyric {
+    height: 100%;
+    overflow: hidden;
+    padding: 40px 0 100px 0;
+  }
+  .playing-lyric:before{
+		content: "";
+	}
+	.playing-lyric:after{
+		content: "";
+	}
   .playing-zz img {
   	width: 27.5%;
   	margin-top: -8%;
@@ -250,14 +289,36 @@
   	transition: all linear .5s;
   }
   .playing-main {
-    margin: 0 auto;
-    position: relative;
-    top: 17%;
+    /* margin: 0 auto; */
+    /* position: relative; */
+    /* top: 17%; */
+    padding-top: 7.142857rem;
   	z-index: 10;
-    width: 22rem;
-  	animation-delay: .5s;
+    /* width: 22rem; */
+  	/* animation-delay: .5s;
   	animation: circle 20s linear infinite;
-  	animation-play-state: paused;
+  	animation-play-state: paused; */
+  }
+  .playing-disc{
+    position: relative;
+    margin: 0 auto;
+    width: 17.714286rem;
+    height: 17.714286rem;
+  }
+  .playing-turn{
+    width: 100%;
+    height: 100%;
+  }
+  .playing-turn:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    background: url(http://s3.music.126.net/m/s/img/disc.png?d3bdd1080a72129346aa0b4b4964b75f) no-repeat;
+    background-size: contain;
   }
   @keyframes circle {
   	0% {
@@ -267,16 +328,16 @@
   		transform: rotate(360deg);
   	}
   }
-  .playing .playing-main {
-  	animation-play-state: running !important;
-  }
   .playing .playing-zz img {
   	transform: rotate(-0deg);
   }
   .playingmainbg {
-  	width: 100%;
-  	position: relative;
-  	z-index: 1;
+    width: 92%;
+    position: relative;
+    z-index: 1;
+    height: 92%;
+    left: 4%;
+    top: 4%;
   }
   .pmaincover {
   	position: absolute;
@@ -289,6 +350,12 @@
   	border-radius: 50%;
   	overflow: hidden;
   	background-size: 100% 100%;
+    animation-delay: .5s;
+  	animation: circle 20s linear infinite;
+  	animation-play-state: paused;
+  }
+  .playing .pmaincover {
+  	animation-play-state: running !important;
   }
   .playing-actwrap {
   	position: absolute;
@@ -314,7 +381,7 @@
   }
   .pi-act img {
   	width: 50%;
-  	max-width: ;
+  	/* max-width: ; */
   }
   .pa-baction,
   .pa-maction,
@@ -349,5 +416,29 @@
     padding: 0;
     background-position: center center;
     background-size: auto 100%;
+  }
+  @media screen and (min-width: 360px){
+    .playing-main {
+      padding-top: 110px;
+    }
+    .playing-disc{
+      width: 21.142857rem;
+      height: 21.142857rem;
+    }
+    .playing-turn:before {
+      background-image: url(http://s3.music.126.net/m/s/img/disc-ip6.png?69796123ad7cfe95781ea38aac8f2d48);
+    }
+  }
+  @media screen and (min-width: 414px){
+    .playing-main {
+        padding-top: 120px;
+    }
+    .playing-disc{
+      width: 24.428571rem;
+      height: 24.428571rem;
+    }
+    .playing-turn:before{
+      background-image: url(//s3.music.126.net/m/s/img/disc-plus.png?b700b62e1971b351dcb8b8ce1c9ceea3);
+    }
   }
 </style>

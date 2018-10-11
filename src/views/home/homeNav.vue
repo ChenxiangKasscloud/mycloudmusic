@@ -5,7 +5,7 @@
           <span :class="{'tab-item-active':index === tabIndex}">{{ item.name }}</span>
         </li>
       </router-link>
-      <li class="tab-active" :style="{ 'left' : tabIndex*33.3.toString() + '%' }">
+      <li class="tab-active" :style="{ 'left' : (tabIndex*49.5).toString() + '%' }">
         <div></div>
       </li>
     </ul>
@@ -16,9 +16,9 @@
     data () {
       return {
         tabs: [
-          { name: '推荐', routerName: 'RecmdList'},
-          { name: '歌单', routerName: 'OrderList'},
-          { name: '电台', routerName: 'DjList'},
+          { name: '个性推荐', routerName: 'RecmdList'},
+          // { name: '歌单', routerName: 'OrderList'},
+          { name: '电台之声', routerName: 'DjList'},
         ],
         tabIndex: 0, //  默认激活tab索引
       }
@@ -58,29 +58,25 @@
   }
   .tabs .tab-item {
     font-size: 1rem;
-    width: 33.3%;
     color: #666;
     line-height: 2.45rem;
     text-align: center;
     padding: 0 12%;
     transition: .3s all;
     -webkit-tap-highlight-color:transparent;
+    flex: 1 0 auto;
   }
   .tabs .tab-item span{
     display: block;
   }
   .tabs .tab-active{
-    width: 33.3%;
+    width: 50%;
     height: .15rem;
     text-align: center;
     position: absolute;
     bottom: 0;
-    left:0;
-    padding: 0 12%;
-    -webkit-transition: all .3s ease;
-    -moz-transition: all .3s ease;
-    -ms-transition: all .3s ease;
-    -o-transition: all .3s ease;
+    left: 0;
+    padding: 0 18%;
     transition: all .3s ease;
   }
   .tabs .tab-active div{

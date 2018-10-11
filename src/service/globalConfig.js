@@ -8,7 +8,7 @@
 export default {
     url: '/route',
 
-    baseURL: "/nodeApi",  //http://192.168.1.78:8060
+    baseURL: '/nodeApi', // http://musicapi.leanapp.cn/banner
 
     method: 'POST',
 

@@ -33,11 +33,6 @@
         detailHeigth:0
       }
     },
-    computed: {
-      phoneResolutionWidth () {
-        return this.$store.state.phoneResolutionWidth
-      }
-    },
     methods: {
       goToMusicList (id) {
         this.$router.push({

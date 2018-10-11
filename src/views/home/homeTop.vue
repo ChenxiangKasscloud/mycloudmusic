@@ -7,9 +7,9 @@
       </div>
       <SearchBar></SearchBar>
       <div class="head-right">
-         <a class="block whiteBg" @click="goPlay()">
+         <i v-show="playing" class="block whiteBg" @click="goPlay()">
            <play-icon slot="right"></play-icon>
-         </a>
+         </i>
       </div>
     </div>
 </template>
@@ -17,6 +17,7 @@
 <script>
   import PlayIcon from '@/components/playicon/index'
   import SearchBar from '../../components/searchBar/index'
+  import { mapState } from 'vuex'
   export default{
     data(){
        return{
@@ -31,11 +32,18 @@
       //   this.$router.push({name: 'Search'})
       // },
       goPlay(){
+        if( !this.playing )
+          return;
         this.$router.push({ name: 'Player'})
       }
     },
     components:{
       SearchBar,PlayIcon
+    },
+    computed: {
+      ...mapState([
+				'playing'
+			])
     }
   }
 </script>

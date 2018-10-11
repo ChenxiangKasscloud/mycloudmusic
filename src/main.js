@@ -11,13 +11,13 @@ import Vue from 'vue'
 import App from './App'
 import router from './router/index'
 import store from './store/index'
-import iView from 'iview';
+import iView from 'iview'
 import filters from './filters/index'
-import Mint from 'mint-ui';
-import 'mint-ui/lib/style.css';
+import Mint from 'mint-ui'
+import 'mint-ui/lib/style.css'
 import './assets/css/index.css'
 import 'normalize.css/normalize.css'// normalize.css 样式格式化
-import vconsole from 'vconsole'; // 引入手机调试板
+// import vconsole from 'vconsole' // 引入手机调试板
 // import API from "@/js/MusicApi"
 
 Vue.use(Mint);

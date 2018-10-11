@@ -24,7 +24,7 @@
       const DPR = window.devicePixelRatio || 1;
       console.info("DPR",DPR);
       //  获取当前手机分辨率宽度
-      this.$store.commit('SETREALWIDTH', document.body.clientWidth * DPR)
+      this.$store.commit('SETREALDPR', DPR)
       //  动态获取手机的DPR设备像素比，对总体字体大小进行设置
       var viewport = document.querySelector('meta[name="viewport"]')
       var html = document.getElementsByTagName('html')[0]

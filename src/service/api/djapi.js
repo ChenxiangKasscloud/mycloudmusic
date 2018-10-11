@@ -6,17 +6,17 @@
 
 'use strict'
 
-import Xhttp from '../Xhttp.js';
-const api = new Xhttp();
+import Xhttp from '../Xhttp.js'
+const api = new Xhttp()
 
 const djApi = {
   // 获取推荐分类电台列表
   getRecommendDjs (params) {
-    return new Promise( (resolve,reject) => {
-      api.get('/dj/recommend/type',params).then( res => {
+    return new Promise((resolve, reject) => {
+      api.get('/dj/recommend/type', params).then(res => {
         resolve(res)
-      }).catch( err => {
-        resolve(res)
+      }).catch(err => {
+        resolve(err)
       })
     })
   }

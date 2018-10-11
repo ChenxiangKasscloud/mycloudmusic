@@ -6,8 +6,8 @@
 
 'use strict'
 
-import Xhttp from '../Xhttp.js';
-const api = new Xhttp();
+import Xhttp from '../Xhttp.js'
+const api = new Xhttp()
 
 const PlayerApi = {
   // 获取歌单详情
