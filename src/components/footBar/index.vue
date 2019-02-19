@@ -38,13 +38,15 @@ export default{
      },
      methods:{
         setTab(tab){
-          this.$store.commit('SETTABBAR',{
-            tabKey: tab
-          })
+          this.$store.commit('SETTABBAR', tab)
         }
      },
      computed:{
-      ...mapState(['selected'])
+      // ...mapState(['selected'])
+        selected: {
+          get () { return this.$store.state.modelSelected },
+          set () { /* 计算属性以函数形式写的时候是只设置了 get 方法，v-model='activeTab' 是一个双向绑定，即既会调用activeTab 的 get 去读取值 ，又会调用其 set 去设置值 */ }
+        }
      }
 }
 
@@ -53,7 +55,7 @@ export default{
 <style scoped>
   .mint-tabbar{
     position:fixed;
-    z-index: 2;
+    z-index: 9;
   }
   .mint-tab-item{
     color: #969696;

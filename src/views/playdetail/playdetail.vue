@@ -195,7 +195,7 @@
 		background-color: #eee
 	}
 	.flexlist .flexlist{
-    border-bottom: 0.06rem solid #eaeaea;
+    	border-bottom: 0.06rem solid #eaeaea;
 	}
 	.icon-arrow-right{
 		color: #ccc;
@@ -205,12 +205,12 @@
 		font-size: 1.1em;
 	}
 	.affixed{
-    top: 50px;
-    position: fixed;
-    width: 100%;
-    z-index: 6;
-    background-color: #fff;
-	  border-bottom: 0.06rem solid #eaeaea;
+		top: 50px;
+		position: fixed;
+		width: 100%;
+		z-index: 6;
+		background-color: #fff;
+	    border-bottom: 0.06rem solid #eaeaea;
 	}
 	.affixed .flexlist{
     border-bottom: none;

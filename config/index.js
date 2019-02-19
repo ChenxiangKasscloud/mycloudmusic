@@ -29,7 +29,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/nodeApi': {
-        target: 'http://localhost:4000',
+        target: 'http://localhost:9000',  // node API 服务的地址
         changeOrigin: true,
         pathRewrite: {
           '^/nodeApi': ''

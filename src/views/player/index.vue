@@ -15,9 +15,9 @@
       <div class="playing-main" v-show="!showlrc" @click="showlrc=!showlrc">
         <div class="playing-disc">
           <div class="playing-turn">
-            <img v-show="!playing" class="playingmainbg" src="../../assets/img/play.png" />
+            <img class="playingmainbg" src="../../assets/img/play.png" />
             <div
-              v-show="playing"
+              v-show="cover||(music.al||music.album||{}).picUrl !== undefined"
               :style="{'background-image':'url('+(cover||(music.al||music.album||{}).picUrl)+'?param=200y200)'}"
               bindtap="loadlrc"
               class="pmaincover">
@@ -95,7 +95,10 @@
 				showlrc: false,
 				cover: "",
         pop_tg: 0,
-        lrcObj:{lrc: [{}]}
+        lrcObj:{lrc: [{}]},
+        rotate: 0,
+        tickTime: 0,
+        rotateIntervalId: null
       }
     },
     components : {
@@ -210,6 +213,14 @@
       },
       // 改变播放状态
       playingtoggle () {
+        // if ( !this.playing ) {
+        //   // 开始播放
+        //   this.calcImgRotate(true)
+        // }
+        // if ( this.playing ) {
+        //   // 停止播放，计算图片旋转度数
+        //   this.calcImgRotate(false)
+        // }
         this.playing ? this.$store.commit('SETPLAYING',false) : this.$store.commit('SETPLAYING',true);
       },
       // change
@@ -224,7 +235,6 @@
 					this.cover = "";
           this.getcommentinfo()
           this.getMusicPlayUrls(this.music.id).then( (res) =>{
-            console.info("getPlayUrls",res)
             this.$store.commit('SETPLAYURL',res);
           })
 				}
@@ -321,11 +331,8 @@
     background-size: contain;
   }
   @keyframes circle {
-  	0% {
-  		transform: rotate(0deg);
-  	}
   	100% {
-  		transform: rotate(360deg);
+  		transform: rotate(1turn);
   	}
   }
   .playing .playing-zz img {
@@ -352,7 +359,7 @@
   	background-size: 100% 100%;
     animation-delay: .5s;
   	animation: circle 20s linear infinite;
-  	animation-play-state: paused;
+    animation-play-state: paused;
   }
   .playing .pmaincover {
   	animation-play-state: running !important;
@@ -381,7 +388,6 @@
   }
   .pi-act img {
   	width: 50%;
-  	/* max-width: ; */
   }
   .pa-baction,
   .pa-maction,

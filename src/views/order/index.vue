@@ -4,6 +4,10 @@
     v-infinite-scroll="getplaylist"
     infinite-scroll-disabled="stopinfinite"
     infinite-scroll-distance="10">
+    <mt-header title="歌单" class="order-header">
+      <mt-button slot="left" @click="$router.go(-1)" icon="back"></mt-button>
+			<play-icon slot="right"></play-icon>
+    </mt-header>
     <hquality></hquality>
     <!-- 歌单分类 -->
     <template v-if='catelist.length != 0' >
@@ -33,6 +37,7 @@
   import Hquality from './highquality'
   import CateList from './cate'
   import OrderList from '../../components/order/orderlist'
+  import PlayIcon from "@/components/playicon/index"
 
   export default{
     name : "order",
@@ -50,7 +55,7 @@
       }
     },
     components: {
-      Loading, Hquality, CateList, OrderList
+      Loading, Hquality, CateList, OrderList,PlayIcon
     },
     activated() {
 			this.stopinfinite = this.isloading ? true : false
@@ -101,10 +106,23 @@
   }
 </script>
 
+<style>
+  .order-header span,
+  .order-header .mint-header-title{
+    color: #333;
+  }
+  .order-header .cntloading span{
+    background-color: #333;
+  }
+</style>
 
 <style scoped>
   .flex-boxlist {
     min-height: 500px;
+  }
+  .order-header{
+    height: 50px;
+    background-color: #fff;
   }
   #plc_header {
     overflow: hidden;
@@ -120,5 +138,10 @@
   .icon-arrow-right{
     font-size: .9rem;
     vertical-align: inherit;
+  }
+  .order-list-component{
+    position: relative;
+    top: -81px;
+    z-index: 3;
   }
 </style>

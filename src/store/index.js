@@ -47,7 +47,7 @@ const store = new Vuex.Store({
     index_song: 0,
     favorites : [],
     iscycle : false,
-    selected: 'find_music' // find_music, my_music, friends, account
+    modelSelected: 'find_music' // find_music, my_music, friends, account
   },
   actions:{
     // 异步获获取红心歌曲，用户创建的歌单列表
@@ -114,8 +114,8 @@ const store = new Vuex.Store({
     }
   },
   mutations : {
-    SETTABBAR (state, { tabkey} ){
-      state.selected = tabkey
+    SETTABBAR (state, modelKey ){
+      state.modelSelected = modelKey
     },
     SETAUDIO (state, audio) {
       state.AUDIO = audio
